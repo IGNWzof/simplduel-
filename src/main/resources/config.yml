@@ -1,0 +1,285 @@
+# ======================================================================
+#  SimpleDuels - config.yml        (edit anything, then: /duels reload)
+#
+#  * Text uses MiniMessage:  <red>  <bold>  <gradient:#ff0000:#00ff00>text</gradient>
+#  * Placeholders look like {player}. A scoreboard line is hidden when it
+#    uses a placeholder that doesn't apply (ex: {party} when you have no party).
+#  * Sounds are lists of  "vanilla.sound.key volume pitch"  (empty list = silent).
+#  * Arenas / kits / lobby / player settings are stored in data.yml (don't edit by hand).
+# ======================================================================
+
+general:
+  footer: "<yellow>play.example.net"
+  countdown-seconds: 5
+  end-delay-seconds: 3          # seconds between the end of a match and the teleport to lobby
+  request-expire-seconds: 60
+  wind-charge-reset: true       # instant wind charge re-throw in matches
+  totems-pop: true              # totems of undying work in matches
+  party-max: 4
+  max-arena-volume: 300000      # max blocks of an arena region (for regen)
+
+sounds:
+  victory:
+    - "entity.player.levelup 1 1"
+    - "entity.firework_rocket.blast 1 1"
+  defeat:
+    - "entity.wither.hurt 1 0.8"
+  countdown:
+    - "block.note_block.hat 1 1"
+  fight:
+    - "block.note_block.pling 1 2"
+  eliminated:
+    - "entity.lightning_bolt.thunder 0.6 1.2"
+  queue-found:
+    - "block.note_block.pling 1 1.5"
+  request:
+    - "entity.experience_orb.pickup 1 1.2"
+  party-created:
+    - "entity.player.levelup 0.8 1.4"
+  party-invite:
+    - "entity.experience_orb.pickup 1 1"
+  click:
+    - "ui.button.click 0.8 1"
+
+titles:
+  victory:
+    title: "<green><bold>VICTORY!"
+    subtitle: "<gray>You defeated <white>{loser}"
+  defeat:
+    title: "<red><bold>DEFEAT"
+    subtitle: "<gray>You lost to <white>{winner}"
+  fight:
+    title: "<green><bold>FIGHT!"
+    subtitle: ""
+  countdown:
+    title: "<yellow>{count}"
+    subtitle: "<gray>vs <white>{opponent}"
+  countdown-ffa:
+    title: "<yellow>{count}"
+    subtitle: "<gray>Free for all"
+  eliminated:
+    title: "<red><bold>ELIMINATED"
+    subtitle: "<gray>Your team is still fighting"
+  party-created:
+    title: "<light_purple><bold>PARTY CREATED"
+    subtitle: "<gray>Invite friends with <white>/party invite [player]"
+  party-disbanded:
+    title: "<red><bold>PARTY DISBANDED"
+    subtitle: ""
+
+messages:
+  no-free-arena: "<red>No free arena right now."
+  no-kits: "<red>No kits yet. (Admin: build a kit then /kit save [name])"
+  back-to-lobby: "<gray>Back to the lobby."
+
+  duel-usage: "<red>/duel [player] [kit] <gray>| /duel accept | /duel deny"
+  duel-party-leader-only: "<red>Only your party leader can start or accept duels."
+  request-none: "<red>No pending duel request."
+  player-offline: "<red>That player is offline."
+  player-not-found: "<red>Player not found."
+  accept-size-mismatch: "<red>Both parties must be the same size."
+  someone-busy: "<red>Someone is already busy."
+  request-declined: "<red>{player} declined your duel."
+  request-denied-self: "<gray>Declined."
+  party-challenge-leader: "<red>That player is in a party. Challenge their leader: <white>{leader}"
+  requests-off: "<red>That player isn't accepting duel requests."
+  size-mismatch: "<red>Both sides must be the same size (party vs party, solo vs solo)."
+  busy-any: "<red>Someone is already in a duel / spectating."
+  kit-not-found: "<red>Kit not found."
+  request-sent: "<green>Duel request sent to <white>{player} <gray>(kit: {kit}){size}"
+  request-received: "<gold>{player} <yellow>challenged you!{size} <gray>Kit: <aqua>{kit} <click:run_command:'/duel accept'><green><bold>[ACCEPT]</bold></click> <click:run_command:'/duel deny'><red><bold>[DENY]</bold></click>"
+
+  spectate-usage: "<red>/spectate [player]"
+  spec-while-dueling: "<red>You can't spectate while dueling."
+  spec-not-dueling: "<red>That player isn't in a duel."
+  spectating: "<green>Spectating <white>{player}<green>. <gray>/leave or /lobby to exit."
+
+  queue-left: "<yellow>You left the queue."
+  queue-party-block: "<red>Leave your party to join the solo queue."
+  queue-searching: "<green>Searching for a <aqua>{kit} <green>match... <gray>(right-click the sword again to cancel)"
+  queue-no-arena: "<red>No free arena right now, try again in a moment."
+  queue-found: "<green>Match found!"
+
+  eliminated-team: "<red>{player} <gray>was eliminated."
+  eliminated-ffa: "<red>{player} <gray>was eliminated. <white>{alive} left"
+  duel-summary:
+    - ""
+    - "<gold><bold>MATCH OVER"
+    - "<green>Winner: <white>{winner} <gray>({hp} hearts left)"
+    - "<red>Loser: <white>{loser}"
+    - "<gray>Duration: <white>{time} <gray>| Kit: <aqua>{kit}"
+    - ""
+
+  party-created: "<green>Party created! <gray>/party invite [player]"
+  party-need-create: "<red>Create a party first: /party create"
+  party-leader-only: "<red>Only the party leader can do that."
+  party-invite-usage: "<red>/party invite [player]"
+  party-already-in: "<red>You're already in a party."
+  party-in-other: "<red>That player is already in a party."
+  party-full: "<red>Party is full."
+  party-invite-sent: "<green>Invited <white>{player}"
+  party-invite-received: "<gold>{player} <yellow>invited you to their party! <click:run_command:'/party accept'><green><bold>[ACCEPT]</bold></click>"
+  party-no-invite: "<red>No pending party invite."
+  party-leave-first: "<red>Leave your party first."
+  party-gone: "<red>That party no longer exists."
+  party-joined: "<green>{player} joined the party!"
+  party-left-self: "<yellow>You left the party."
+  party-left: "<yellow>{player} left the party."
+  party-not-in: "<red>You're not in a party."
+  party-kick-usage: "<red>/party kick [player]"
+  party-not-member: "<red>That player isn't in your party."
+  party-kicked: "<red>You were kicked from the party."
+  party-disbanded: "<red>Party disbanded."
+  party-new-leader: "<yellow>{player} is now the party leader."
+  party-ffa-min: "<red>You need at least 2 players in the party."
+  party-ffa-busy: "<red>Someone in your party is busy."
+  party-chat-usage: "<red>/party chat [message]"
+  party-chat-format: "<light_purple>[Party] <white>{player}<gray>: <white>"
+  party-list-none: "<gray>You're not in a party. <white>/party create <gray>| /party accept"
+  party-list: "<gold>Party ({size}/{max}): <white>{members}"
+
+  editor-start: "<gold><bold>Kit Editor <gray>- <aqua>{kit}"
+  editor-buttons: "<gray>Rearrange your inventory / hotbar, then click: <click:run_command:'/kiteditor save'><green><bold>[SAVE]</bold></click> <click:run_command:'/kiteditor reset'><yellow><bold>[RESET]</bold></click> <click:run_command:'/kiteditor cancel'><red><bold>[CANCEL]</bold></click>"
+  editor-not-editing: "<red>You're not editing a kit. Use the book in the lobby."
+  editor-bad-layout: "<red>Keep all your kit items in the inventory (armor stays on, nothing in the crafting grid), then save again."
+  editor-saved: "<green>Layout saved for <aqua>{kit}<green>!"
+  editor-closed: "<yellow>Editor closed."
+  editor-reset: "<yellow>Layout reset to default."
+  editor-busy: "<red>Leave your duel first."
+
+lobby-items:
+  queue:
+    slot: 0
+    material: IRON_SWORD
+    name: "<yellow><bold>Unranked Queue"
+    lore: ["<gray>Right-click to pick a kit and queue"]
+  party-create:
+    slot: 1
+    material: NAME_TAG
+    name: "<light_purple><bold>Create Party"
+    lore: ["<gray>Right-click to create a party"]
+  party-ffa:
+    slot: 0
+    material: LECTERN
+    name: "<gold><bold>Start Party FFA"
+    lore: ["<gray>Right-click to pick a kit", "<gray>and start a free-for-all"]
+  party-disband:
+    slot: 1
+    material: BARRIER
+    name: "<red><bold>Disband Party"
+    lore: ["<gray>Right-click to disband your party"]
+  party-leave:
+    slot: 1
+    material: BARRIER
+    name: "<red><bold>Leave Party"
+    lore: ["<gray>Right-click to leave the party"]
+  editor:
+    slot: 2
+    material: BOOK
+    name: "<aqua><bold>Kit Editor"
+    lore: ["<gray>Right-click to rearrange your kits"]
+  settings:
+    slot: 8
+    material: COMPARATOR
+    name: "<green><bold>Settings"
+    lore: ["<gray>Scoreboard, nametags, players, requests"]
+
+gui:
+  glass: BLACK_STAINED_GLASS_PANE
+  kit-name: "<yellow><bold>{kit}"
+  titles:
+    duel: "<dark_gray>Duel - select a gamemode"
+    queue: "<dark_gray>Unranked - select a gamemode"
+    ffa: "<dark_gray>Party FFA - select a gamemode"
+    editor: "<dark_gray>Kit Editor - select a kit"
+    settings: "<dark_gray>Settings"
+  lore:
+    duel:
+      - "<gray>Fighting: <white>{fighting}"
+      - "<gray>Queued: <white>{queued}"
+      - ""
+      - "<green>Click to challenge!"
+    queue:
+      - "<gray>Fighting: <white>{fighting}"
+      - "<gray>Queued: <white>{queued}"
+      - ""
+      - "<green>Click to join the queue!"
+    ffa:
+      - "<gray>Fighting: <white>{fighting}"
+      - ""
+      - "<green>Click to start the FFA!"
+    editor:
+      - ""
+      - "<green>Click to edit your layout!"
+  settings:
+    scoreboard:
+      name: "Scoreboard"
+      description: "Show the sidebar scoreboard"
+    nametags:
+      name: "Player nametags"
+      description: "Show names above players' heads"
+    players:
+      name: "Show players"
+      description: "See other players in the lobby"
+    requests:
+      name: "Duel requests"
+      description: "Receive duel requests"
+
+scoreboard:
+  title: "<gradient:#ff5555:#ffaa00><bold>DUELS"
+  lobby:
+    - ""
+    - "<white>Online: <green>{online}"
+    - "<white>Fighting: <red>{fighting}"
+    - "<white>Ping: <green>{ping}ms"
+    - "<white>Party: <gold>{party}"
+    - "<white>Queue: <yellow>{queue}"
+    - ""
+    - "{footer}"
+  duel:
+    - ""
+    - "<white>Opponent: <red>{opponent}"
+    - "<white>Kit: <aqua>{kit}"
+    - "<white>Time: <yellow>{time}"
+    - ""
+    - "<white>You: <green>{you_ping}ms"
+    - "<white>Them: <red>{them_ping}ms"
+    - ""
+    - "{footer}"
+  team:
+    - ""
+    - "<white>Opponent: <red>{opponent}"
+    - "<white>Kit: <aqua>{kit}"
+    - "<white>Time: <yellow>{time}"
+    - ""
+    - "<white>Alive: <green>{team_alive}<gray> vs <red>{enemy_alive}"
+    - ""
+    - "{footer}"
+  ffa:
+    - ""
+    - "<white>Mode: <gold>FFA"
+    - "<white>Kit: <aqua>{kit}"
+    - "<white>Time: <yellow>{time}"
+    - ""
+    - "<white>Alive: <green>{alive}<gray>/{total}"
+    - ""
+    - "{footer}"
+  spectate:
+    - ""
+    - "<white>Spectating"
+    - "<white>{players}"
+    - "<white>Kit: <aqua>{kit}"
+    - "<gray>/leave to exit"
+    - ""
+    - "{footer}"
+
+tab:
+  header:
+    - "<gradient:#ff5555:#ffaa00><bold>DUELS</bold></gradient>"
+    - "<gray>Online: <white>{online}"
+  footer:
+    - "<gray>Ping: <green>{ping}ms"
+    - "<yellow>play.example.net"
+  name-lobby: "<green>{player}"
+  name-fighting: "<red>[Fighting] <white>{player}"
+  name-spectating: "<gray>[Spec] <white>{player}"
